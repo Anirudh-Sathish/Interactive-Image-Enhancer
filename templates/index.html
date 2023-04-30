@@ -3,6 +3,10 @@
 
 {% block content %}
 <div class="container-background">
+    <div class="moving-texttt">
+        <span style="color: black;">DIP Project: <span style="color: white;" class="moving-text"></span></span>
+    </div>
+
     <form action="" method="POST" enctype="multipart/form-data">
         {% csrf_token %}
         <div class="image-preview">
@@ -15,4 +19,13 @@
         <button class="">Let's Go...</button>
     </form>
 </div>
+<script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
+<script>
+    var types = new Typed('.moving-text', {
+        strings: ['Team 16', 'Image Inhancement'],
+        typeSpeed: 100,
+        backSpeed: 100,
+        loop: true
+    })
+</script>
 {% endblock content %}

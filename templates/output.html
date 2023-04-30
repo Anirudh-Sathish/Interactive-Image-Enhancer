@@ -5,11 +5,11 @@
 {% block content %}
 <div class="container-background">
     <form action="" style="display: flex; justify-content: space-between; width: 100vw; margin: 0 100px;">
-        <div class="image-preview">
+        <div class="image-preview" style="margin-top: 0;">
             <img id="preview-image" src="{{inputImg.inputImg.url}}" alt="Preview">
         </div>
         <input type="range" min="0" max="10" step="1">
-        <div class="image-preview">
+        <div class="image-preview" style="margin-top: 0;">
             <img id="preview-image" src="{{outputImg}}" alt="Preview">
         </div>
         <!-- <br> -->
@@ -19,4 +19,20 @@
     </form>
     <a href="{% url 'home' %}">Home</a>
 </div>
+<script>
+    const rangeInput = document.querySelector('input[type="range"]');
+
+    rangeInput.addEventListener('change', (event) => {
+        const value = event.target.value;
+
+        // const xhr = new XMLHttpRequest();
+        // xhr.open('POST', '');
+        // xhr.setRequestHeader('Content-Type', 'application/json');
+        // xhr.onload = function () {
+        //     // Handle response from server
+        // };
+        // xhr.send(JSON.stringify({ value }));
+    });
+
+</script>
 {% endblock content %}

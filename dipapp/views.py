@@ -5,7 +5,6 @@ from .models import ImageModel
 # Create your views here.
 def home(request):
     if request.method == "POST":
-        # print(request.FILES["inputImg"])
         Img = request.FILES["inputImg"]
         name = "amit"
         inputImg = ImageModel(name=name, inputImg=Img)
@@ -15,12 +14,19 @@ def home(request):
             "inputImg": inputImg,
             "outputImg": outputImg,
         }
-        return render(request, "output.html", context)
+        # return render(request, "output.html", context)
+        return redirect("output", permanent=True, pk=inputImg.pk)
     return render(request, "index.html")
 
 
-def output(request):
-    return render(request, "output.html")
+def output(request, pk):
+    my_object = ImageModel.objects.get(pk=pk)
+    print(my_object)
+    context = {
+        "inputImg": my_object,
+        # "outputImg": outputImg,
+    }
+    return render(request, "output.html", context)
 
 
 def output2(request):
