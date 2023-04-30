@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container-background">
+    <form action="" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="image-preview">
+            <img id="preview-image" src="#" alt="Preview">
+        </div>
+        <br>
+        <input class="custom-file-input" type="file" id="inputImg" name="inputImg" accept="image/*">
+        <label for="inputImg">Upload Image</label>
+        <br><br>
+        <button class="">Let's Go...</button>
+    </form>
+</div>
+{% endblock content %}

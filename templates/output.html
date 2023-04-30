@@ -1,0 +1,22 @@
+{% extends 'base.html' %}
+{% load static %}
+
+
+{% block content %}
+<div class="container-background">
+    <form action="" style="display: flex; justify-content: space-between; width: 100vw; margin: 0 100px;">
+        <div class="image-preview">
+            <img id="preview-image" src="{{inputImg.inputImg.url}}" alt="Preview">
+        </div>
+        <input type="range" min="0" max="10" step="1">
+        <div class="image-preview">
+            <img id="preview-image" src="{{outputImg}}" alt="Preview">
+        </div>
+        <!-- <br> -->
+        <!-- <input class="custom-file-input" type="file" id="inputImg" name="inputImg" accept="image/*"> -->
+        <!-- <label for="inputImg">Upload Image</label> -->
+        <!-- <br><br> -->
+    </form>
+    <a href="{% url 'home' %}">Home</a>
+</div>
+{% endblock content %}
