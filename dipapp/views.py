@@ -8,20 +8,50 @@ import numpy as np
 import os 
 from django.core.files.base import ContentFile
 from .histEQ import custom_histogram_equalization
+from .negation import negate_image
+from .thresholding import threshold_image
+from .contrastenhance import enhance_contrast
+import json 
 
 # Create your views here.
 def home(request):
     if request.method == "POST":
         Img = request.FILES["inputImg"]
-
+        value=request.POST.get('submit_button')
+        print(value)
         pil_img = Image.open(Img)
         cv_img = cv2.cvtColor(np.array(pil_img), cv2.COLOR_BGR2GRAY)
+
+        if(value == "type1"):
+            # hist specification
+            print("Here")
+            probs = [1 , 1 , 1 , 1 ]
+            len_proba = len(probs)
+            histIm = custom_histogram_equalization(cv_img,probs,len_proba)
+            pil_gray_img = Image.fromarray(histIm)
+        elif(value == "type2"):
+            # negation 
+            negated = negate_image(cv_img)
+            pil_gray_img = Image.fromarray(negated)
+        elif(value == "type3"):
+            # thresholding
+            t_value = 100
+            image_thresholded = threshold_image(cv_img,t_value)
+            pil_gray_img = Image.fromarray(image_thresholded)
+        elif(value == "type4"):
+            # contrast enhancement
+            a1 = 3
+            b2 = 50
+            contrast_enhanced = enhance_contrast(cv_img,a1, b2)
+            pil_gray_img = Image.fromarray(contrast_enhanced)
+
         
-        # modify this later 
-        probs = [0.25 , 0.25 , 0.25 , 0.25 ]
-        len_proba = len(probs)
-        histIm = custom_histogram_equalization(cv_img,probs,len_proba)
-        pil_gray_img = Image.fromarray(histIm)
+        
+    
+        # probs = [1 , 1 , 1 , 1 ]
+        # len_proba = len(probs)
+        # histIm = custom_histogram_equalization(cv_img,probs,len_proba)
+        # pil_gray_img = Image.fromarray(histIm)
 
 
         # save

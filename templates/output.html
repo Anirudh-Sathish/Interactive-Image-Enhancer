@@ -25,7 +25,13 @@
     rangeInput.addEventListener('change', (event) => {
         const value = event.target.value;
         console.log(value)
-
+        
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '../dipapp/migrations/views.py');
+        xhr.setRequestHeader('Content-Type', 'application/json');
+        var data = { 'value': value };
+        xhr.send(JSON.stringify(data));
+        console.log("Sent");
         // const xhr = new XMLHttpRequest();
         // xhr.open('POST', '');
         // xhr.setRequestHeader('Content-Type', 'application/json');

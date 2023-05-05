@@ -4,7 +4,7 @@
 {% block content %}
 <div class="container-background">
     <div class="moving-texttt">
-        <span style="color: black;">DIP Project: <span style="color: white;" class="moving-text"></span></span>
+        <span style="color: black;">Inhancer: <span style="color: white;" class="moving-text"></span></span>
     </div>
 
     <form action="" method="POST" enctype="multipart/form-data">
@@ -16,13 +16,20 @@
         <input class="custom-file-input" type="file" id="inputImg" name="inputImg" accept="image/*">
         <label for="inputImg">Upload Image</label>
         <br><br>
-        <button class="">Let's Go...</button>
-    </form>
+        <button type="submit" value="type1" name='submit_button' class="">Specification</button>
+        <button type="submit" value="type2" name='submit_button' class="">Negation</button>
+        <button type="submit" value="type3" name='submit_button' class="">Thresholding</button>
+        <button type="submit" value="type4" name='submit_button' class="">Contrast Enhancement</button>
+       <!--
+        <button type="submit" value="type5" name='submit_button' class="">Specification</button>
+        <button type="submit" value="type6" name='submit_button' class="">Negation</button>
+        <button type="submit" value="type7" name='submit_button' class="">Thresholding</button>
+        -->
 </div>
 <script src="https://unpkg.com/typed.js@2.0.15/dist/typed.umd.js"></script>
 <script>
     var types = new Typed('.moving-text', {
-        strings: ['Team 16', 'Image Inhancement'],
+        strings: ['Ultimate ', 'Image Inhancement'],
         typeSpeed: 100,
         backSpeed: 100,
         loop: true
